@@ -1,0 +1,11 @@
+.flex-container {
+    background-color: #ebf2f2;
+    height: 100%;
+}
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 20px 15px;
+}

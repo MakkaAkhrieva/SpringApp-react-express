@@ -1,0 +1,32 @@
+.error {
+  color: red;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  max-width: 1000px;
+  gap: 25px;
+  height: 100%;
+  margin: 40px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+@media (max-width: 990px) {
+  .box {
+    flex-grow: 1;
+    height: 100%;
+  }
+}
