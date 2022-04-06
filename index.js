@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
 
@@ -35,11 +34,11 @@ app.get("/cards", (req, res) => {
 });
 
 app.post("/user", (req, res) => {
-  const user = req.body
-  console.log(user)
+  const user = req.body;
+  console.log(req.body)
   fs.writeFile(
     path.join(__dirname,"data", "user.json"),
-    user,
+    JSON.stringify(user),
     (err) => {
       if (err) {
         throw err;
@@ -50,7 +49,6 @@ app.post("/user", (req, res) => {
   );
 })
 
-app.use(bodyParser.urlencoded({ extended: false }));
 
 const PORT = 7000;
 
