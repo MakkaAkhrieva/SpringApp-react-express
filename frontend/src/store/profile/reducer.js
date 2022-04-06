@@ -1,9 +1,10 @@
-import { profileActionTypes } from "./actions";
+import { profileActionTypes,createPosts } from "./actions";
 
 const initialState = {
   login: "",
   password: "",
   isLoggedIn: false,
+  user:{}
 };
 
 export const profileReduces = (state = initialState, action) => {
@@ -24,6 +25,11 @@ export const profileReduces = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: action.payload,
+      };
+    case profileActionTypes.POST_DATA:
+      return {
+        ...state,
+        user: action.payload
       };
     default:
       return state;

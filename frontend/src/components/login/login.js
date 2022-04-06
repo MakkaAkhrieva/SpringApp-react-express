@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { profileActions } from "../../store/profile";
+import { profileActions , createPosts} from "../../store/profile";
 
 import "./login.css";
 
@@ -29,6 +29,11 @@ const LogIn = () => {
     e.preventDefault();
     if (profile.login === "admin" && profile.password === "1234") {
       dispatch(profileActions.setIsLoggedIn(true));
+      const post={
+        login:profile.login,
+        password:profile.password
+      }
+      dispatch(createPosts(post))
       navigate("/");
     } else {
       setText(true);
