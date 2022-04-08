@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const bodyParser=require('body-parser');
 
 const app = express();
 
@@ -33,7 +34,7 @@ app.get("/cards", (req, res) => {
   );
 });
 
-app.post("/user", (req, res) => {
+app.post("/user",bodyParser.json(),(req, res) => {
   const user = req.body;
   console.log(req.body)
   fs.writeFile(
@@ -43,7 +44,7 @@ app.post("/user", (req, res) => {
       if (err) {
         throw err;
       } else {
-        res.end(user);
+        res.end();
       }
     }
   );
