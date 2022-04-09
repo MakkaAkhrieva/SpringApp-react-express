@@ -1,15 +1,15 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { profileActions , createPosts} from "../../store/profile";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { profileActions, createPosts } from '../../store/profile';
 
-import "./login.css";
+import './login.css';
 
 const LogIn = () => {
   const dispatch = useDispatch();
 
-  const textError = "Incorrect login or password";
+  const textError = 'Incorrect login or password';
 
   const [text, setText] = useState(false);
 
@@ -27,14 +27,15 @@ const LogIn = () => {
 
   const logIn = (e) => {
     e.preventDefault();
-    if (profile.login === "admin" && profile.password === "1234") {
+    if (profile.login === 'admin' && profile.password === '1234') {
       dispatch(profileActions.setIsLoggedIn(true));
-      const post={
-        login:profile.login,
-        password:profile.password
-      }
-      dispatch(createPosts(post))
-      navigate("/");
+      const post = {
+        login: profile.login,
+        password: profile.password,
+      };
+      console.log('post');
+      dispatch(createPosts(post));
+      navigate('/');
     } else {
       setText(true);
     }
@@ -43,20 +44,8 @@ const LogIn = () => {
   return (
     <div className="wrapper">
       <form className="form-wrapper" action="#" onSubmit={logIn}>
-        <input
-          type="text"
-          placeholder="Login"
-          required
-          value={profile.login}
-          onChange={loginChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          value={profile.password}
-          onChange={passwordChange}
-        />
+        <input type="text" placeholder="Login" required value={profile.login} onChange={loginChange} />
+        <input type="password" placeholder="Password" required value={profile.password} onChange={passwordChange} />
         <button className="btn-submit" type="submit">
           Log in
         </button>

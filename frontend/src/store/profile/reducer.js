@@ -1,8 +1,8 @@
-import { profileActionTypes } from "./actions";
+import { profileActionTypes } from './actions';
 
 const initialState = {
-  login: "",
-  password: "",
+  login: '',
+  password: '',
   isLoggedIn: false,
   user: {},
 };
