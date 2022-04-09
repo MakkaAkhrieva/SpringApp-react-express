@@ -21,16 +21,16 @@ export const profileActions = {
 };
 
 export const createPosts = (postData) => {
-  //here we will create fetch request
   return (dispatch) => {
     console.log(JSON.stringify(postData));
-    fetch('http://localhost:7000/user', {
+    return fetch('http://localhost:7000/user', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify(postData),
     })
+      .then((response) => response.json())
       .then((post) =>
         dispatch({
           type: profileActionTypes.POST_DATA,

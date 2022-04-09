@@ -1,19 +1,37 @@
-  import { createPosts } from "./actions"  
-/*   import fetchMock=require('fetch-mock') */
-/*  const {createPosts} = require('./actions')  */
-const fetchMock=require('fetch-mock')
+import { createPosts, profileActionTypes } from './actions';
+import fetchMock from 'fetch-mock';
+
+describe('createPost test', () => {
+   it('dipatch response data', () => {
+    const dispatchMock = jest.fn();
+    fetchMock.post('http://localhost:7000/user', { body: { test: 'passed' }});
+
+    createPosts('')(dispatchMock).then(() => {
+      expect(dispatchMock).toHaveBeenCalledWith({
+        type: profileActionTypes.POST_DATA,
+        payload: { test: 'passed' },
+      });
+    });
+  }); 
+
+  it(' response error', () => {
+    const dispatchMock = jest.fn();
+    fetchMock.post('http://localhost:7000/user', { throws: { message: 'network error' }},{ overwriteRoutes: false } );
+    createPosts('')(dispatchMock).then(() => {
+      expect(dispatchMock).toHaveBeenCalled(0);
+    });
+  });
 
 
-test("dispatch test",()=>{
+});
 
-    /* const thunk=createPosts() */
-    fetchMock.get('http://localhost:7000/user');
-    const response = createPosts('http://localhost:7000/user');
-    const result = response.json();
-    expect(result).toEqual("something");
+/* describe('createPost test ',()=>{
+  it(' response error', () => {
+    const dispatchMock = jest.fn();
+    fetchMock.post('http://localhost:7000/user', { throws: { message: 'network error' }} );
 
- /*    const dispatchMock=jest.fn();
-    thunk(dispatchMock)
-
-    expect(dispatchMock).toBeCalledTimes(2) */
-})
+    createPosts('')(dispatchMock).then(() => {
+      expect(dispatchMock).toHaveBeenCalled(0);
+    });
+  }); 
+}); */
