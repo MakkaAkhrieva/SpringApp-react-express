@@ -5,14 +5,46 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/index.js",
+            "type": "node",
+            "name": "vscode-jest-tests",
             "request": "launch",
+            /* "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/react-scripts", */ 
+            "runtimeExecutable": "C:/Users/37529/AppData/Roaming/nvm/v16.14.2/node.exe",
+            "args": [
+               /*  "/frontend/src/store/profile/actions.test.js", */
+               "C:/Users/37529/Documents/Sunmait-trainee/SpringApp-react-express/frontend/src/store/profile/actions.test.js",
+                "--env=jsdom",
+                "--runInBand",
+                "--watchAll=false"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "protocol": "inspector",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
             ],
+            "program": "${workspaceFolder}\\index.js",
+            "runtimeExecutable": "C:/Users/37529/AppData/Roaming/nvm/v16.14.2/node.exe"
+
+        },
+        {
+            "name": "Debug Tests",
             "type": "node",
-            "runtimeExecutable": "C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Node.js/Node.js.lnk"
+            "request": "launch",
+            "args": ["C:/Users/37529/Documents/Sunmait-trainee/SpringApp-react-express/frontend/src/store/profile/actions.test.js", "--runInBand", "--no-cache", "--env=jsdom"],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "runtimeExecutable": "C:/Users/37529/AppData/Roaming/nvm/v16.14.2/node.exe",
         }
     ]
 }
